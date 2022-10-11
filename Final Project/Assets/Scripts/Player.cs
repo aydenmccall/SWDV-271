@@ -3,14 +3,29 @@ using UnityEngine;
 public class Player : Character
 {
     MovementController MovementController;
-    void Start()
+    Hitbox Hitbox;
+    private void Start()
     {
         MovementController = gameObject.AddComponent<MovementController>();
+        Hitbox = gameObject.GetComponentInChildren<Hitbox>();
     }
 
-    private void Attack()
+    private void Update()
     {
-         
+        ReadInput();
+    }
+
+    void ReadInput()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            Attack(90);
+        }
+    }
+
+    private void Attack(int attackFrames)
+    {
+        Hitbox.setActive(attackFrames);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -45,7 +60,6 @@ public class Player : Character
     {
         if (collision.gameObject.CompareTag("StableGround") || collision.gameObject.CompareTag("Enemy"))
         {
-            print("GROUND");
             MovementController.ResetJump();
         }
         //print(collision.gameObject.tag);

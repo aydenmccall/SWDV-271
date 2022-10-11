@@ -552,6 +552,7 @@ GameObject:
   m_Component:
   - component: {fileID: 619186672}
   - component: {fileID: 619186673}
+  - component: {fileID: 619186674}
   m_Layer: 7
   m_Name: Hitbox
   m_TagString: Untagged
@@ -597,8 +598,20 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.45, y: 1}
+  m_Size: {x: 1.41, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &619186674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619186671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 064abd06109269a459d3003df87c7774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &623291364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -793,10 +806,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1005809435}
   - component: {fileID: 1005809434}
-  - component: {fileID: 1005809436}
   - component: {fileID: 1005809439}
   - component: {fileID: 1005809437}
   - component: {fileID: 1005809438}
+  - component: {fileID: 1005809436}
   - component: {fileID: 1005809440}
   m_Layer: 7
   m_Name: Player
@@ -2000,58 +2013,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &2060100560 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7970001261623387085, guid: 6bb84ed3ab76b1d4faaf68de46f71ff0, type: 3}
-  m_PrefabInstance: {fileID: 7970001262264483869}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &2060100564
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2060100560}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 7
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &2060100565
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2060100560}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!1001 &2079128831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2332,9 +2293,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1047838169551945212, guid: 6bb84ed3ab76b1d4faaf68de46f71ff0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1047838169551945212, guid: 6bb84ed3ab76b1d4faaf68de46f71ff0, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c825981c5d72b6443966d73aabf7c144, type: 2}
     - target: {fileID: 7970001261623387085, guid: 6bb84ed3ab76b1d4faaf68de46f71ff0, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy_Soldier
       objectReference: {fileID: 0}
     - target: {fileID: 7970001261623387087, guid: 6bb84ed3ab76b1d4faaf68de46f71ff0, type: 3}
       propertyPath: m_RootOrder
