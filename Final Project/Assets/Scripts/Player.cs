@@ -15,13 +15,20 @@ public class Player : Character
         UIManager = new UIManager(InventoryPrefab);
         UIManager.InitiliazeUI();
         MovementController = gameObject.AddComponent<MovementController>();
+        MovementController.Initiliaze();
         Hitbox = gameObject.GetComponentInChildren<Hitbox>();
     } //End Start
 
     private void Update()
     {
+        MovementController.Updates();
         ReadInput();
     } // End Update
+
+    private void FixedUpdate()
+    {
+        MovementController.FixedUpdates();
+    }
 
     void ReadInput()
     {

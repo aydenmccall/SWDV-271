@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    private float movementSpeed = 3.0f;
+    private float movementSpeed = 4.0f;
     private float jumpForce = 20;
     private bool isJumping = false;
     Vector2 movement = new Vector2();
@@ -27,17 +27,26 @@ public class MovementController : MonoBehaviour
         idleSouth = 5
     }
 
-    private void Start()
+    public enum Directions
+    {
+        Right = 1,
+        Left = 2
+    }
+
+    public Directions FacingDir = Directions.Right;
+
+    public void Initiliaze(float speed = 4)
     {
         // 4
+        movementSpeed = speed; 
         animator = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    public void Updates() 
     {
         // 5
-        //UpdateState();
+        UpdateState();
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && !isJumping)
         {
             isJumping = true;
@@ -45,7 +54,7 @@ public class MovementController : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    public void FixedUpdates()
     {
         // 6
         MoveCharacter();
@@ -71,20 +80,26 @@ public class MovementController : MonoBehaviour
         // 8
         if (movement.x > 0)
         {
-            animator.SetInteger(animationState, (int)CharStates.walkEast);
+            FacingDir = Directions.Right;
+            //gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            //animator.SetInteger(animationState, (int)CharStates.walkEast);
         }
         else if (movement.x < 0)
         {
-            animator.SetInteger(animationState, (int)CharStates.walkWest);
+            FacingDir = Directions.Left;
+            //gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+            transform.rotation = Quaternion.Euler(0, 180f, 0);
+            //animator.SetInteger(animationState, (int)CharStates.walkWest);
         }
-        else if (movement.y > 0)
+        /*else if (movement.y > 0)
         {
             animator.SetInteger(animationState, (int)CharStates.walkNorth);
         }
         else if (movement.y < 0)
         {
             animator.SetInteger(animationState, (int)CharStates.walkSouth);
-        }
+        }*/
         else
         {
             animator.SetInteger(animationState, (int)CharStates.idleSouth);
