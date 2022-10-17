@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Coin : Consumable
 {
-    //item.ItemType[0];
+    
 }
