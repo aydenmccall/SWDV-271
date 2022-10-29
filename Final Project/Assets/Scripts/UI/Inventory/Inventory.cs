@@ -15,22 +15,36 @@ public class Inventory : MonoBehaviour
         set { inventoryArray = value; UpdateUI(); }
     }
 
-    Image itemIcon;
-    TextMeshProUGUI qtyTextComp;
+    public Image itemIcon;
+    public TextMeshProUGUI qtyTextComp;
 
     public Sprite emptyItemSprite;
 
-    public void Initialize()
-    {
-        Transform child = transform.GetChild(0).GetChild(0);
-        itemIcon = child.Find("ItemImage").GetComponent<Image>();
-        qtyTextComp = child.Find("Background").GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
-        print(qtyTextComp);
-    }
+    //public void Initialize()
+    //{
+    //    //Transform child = transform.GetChild(0).GetChild(0);
+    //    //itemIcon = child.Find("ItemImage").GetComponent<Image>();
+    //    //qtyTextComp = child.Find("Background").GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+    //    print(qtyTextComp);
+    //}
 
     private void UpdateUI()
     {
-        if (CheckSlot(0))
+        /*for (int i = 0; i < inventory.Length; i++) // For multi-Item Inventory
+        {
+            if (CheckSlot(0))
+            {
+                itemIcon.sprite = inventory[0].sprite;
+                qtyTextComp.text = inventory[0].quantity.ToString();
+            }
+            else
+            {
+                itemIcon.sprite = emptyItemSprite;
+                qtyTextComp.text = "00";
+            }
+        }*/
+
+        if (CheckSlot(0))   // For single item Inventory
         {
             itemIcon.sprite = inventory[0].sprite;
             qtyTextComp.text = inventory[0].quantity.ToString();
@@ -51,8 +65,10 @@ public class Inventory : MonoBehaviour
         }
         catch(Exception)
         {
+            //print("ItemSlot Failed");
             return -1;
         }
+        //print("Itemslot: " + slot);
         return slot;
     }
     private bool CheckSlot(int slotNumber)
@@ -77,7 +93,7 @@ public class Inventory : MonoBehaviour
         {
             if (!item.stackable)
             {
-                print("Item is already in array");
+                //print("Item is already in array");
                 return false;
             }
             inventory[index].quantity += item.quantity;
@@ -89,11 +105,11 @@ public class Inventory : MonoBehaviour
 
         if (availableSlot == -1)
         {
-            print("No Available slots");
+           // print("No Available slots");
             return false;
         }
-            
-            
+        //print("Inventory Slot: " + availableSlot);
+        //print(item.sprite);
         inventory[availableSlot] = item;
         UpdateUI();
         return true;

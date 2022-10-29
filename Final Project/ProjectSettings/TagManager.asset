@@ -8,6 +8,7 @@ TagManager:
   - PickUp
   - StableGround
   - Hitbox
+  - Background
   layers:
   - Default
   - TransparentFX
@@ -47,6 +48,12 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 1503605793
+    locked: 0
+  - name: Character
+    uniqueID: 2028504479
+    locked: 0
+  - name: Interactable
+    uniqueID: 2782764595
     locked: 0
   - name: Trees
     uniqueID: 1131684395
